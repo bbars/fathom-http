@@ -52,7 +52,6 @@ func (this *HttpHandlers) processRequest(w http.ResponseWriter, r *http.Request,
 			Err: err.Error(),
 		})
 	} else {
-		log.Printf("res: %#v\n", res)
 		json.NewEncoder(w).Encode(ResponseRes{
 			Res: res,
 		})

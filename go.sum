@@ -1,8 +1,6 @@
 github.com/ajstarks/svgo v0.0.0-20200320125537-f189e35d30ca/go.mod h1:K08gAheRH3/J6wwsYMMT4xOr94bZjxIelGM0+d/wbFw=
-github.com/bbars/chess v1.8.1-0.20220705183433-a43b9a6eedb4 h1:Lra/KnXkPEBxBuGLwZPak53vRogaZ3ISMFisL1TVwR8=
-github.com/bbars/chess v1.8.1-0.20220705183433-a43b9a6eedb4/go.mod h1:cRuJUIBFq9Xki05TWHJxHYkC+fFpq45IWwk94DdlCrA=
-github.com/bbars/go-fathom v0.9.0 h1:h8j3pQBTJ9Qj6a0E0rTg9QArhFnCCI12pK4i26X6EiE=
-github.com/bbars/go-fathom v0.9.0/go.mod h1:bXJ89S1ivgkGYAht3e4nISH0Zgmgf4T1ZZSzx7Mc69c=
+github.com/bbars/chess v1.8.1-0.20220709130624-f7f15793d011 h1:mWzOCYpvjiZpnHwG2mQqz8KsCGKy0CsKXTOVZ4FaE4M=
+github.com/bbars/chess v1.8.1-0.20220709130624-f7f15793d011/go.mod h1:cRuJUIBFq9Xki05TWHJxHYkC+fFpq45IWwk94DdlCrA=
 github.com/bbars/go-fathom v0.9.1 h1:bZFSBaYB+UtmeJxK/8ntXwealtZLTVpig+GHBCHavEw=
 github.com/bbars/go-fathom v0.9.1/go.mod h1:bXJ89S1ivgkGYAht3e4nISH0Zgmgf4T1ZZSzx7Mc69c=
 github.com/bbars/limitedpool v0.1.0 h1:6metmqk3E1Kr9X5iId0OXHeTbP96DQVRz0JcV7HIQRo=

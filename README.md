@@ -121,7 +121,7 @@ Response (pretty and shortened):
 }
 ```
 
-### Probe root DWL
+### Probe root WDL
 
 _This is a fallback for the case that some or all DTZ tables are missing._
 

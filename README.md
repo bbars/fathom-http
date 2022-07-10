@@ -157,3 +157,16 @@ Response (pretty and shortened):
     ]
 }
 ```
+
+## CLI Arguments
+
+| Parameter       | Type       | Default           | Description |
+|----------       |-----       |--------           |------------
+| `--allowOrigin` | string     | `"*"`             | Value for HTTP header Access-Control-Allow-Origin
+| `--listen`      | string     | `"127.0.0.1:80"`  | HTTP listen [host]:port
+| `--maxTime`     | [duration] | `"0s"` (infinite) | Max time limit
+| `--poolSize`    | int        | [numcpu]          | Pool size of concurrent Fathom instances
+| `--tbDir`       | string     | `"./tablebases"`  | Path to the directory containing Tablebase files
+
+[duration]: https://pkg.go.dev/time#ParseDuration
+[numcpu]: https://pkg.go.dev/runtime#NumCPU

@@ -14,5 +14,5 @@ RUN go build -o ./fathom-http
 
 EXPOSE 80
 
-ENTRYPOINT ["/app/fathom-http", "--listen", ":80", "--poolSize", "0", "--tbDir", "./tablebases"]
-CMD ["--maxTime", "60s", "--allowOrigin", "*"]
+ENTRYPOINT ["/app/fathom-http", "--listen", ":80", "--tbDir", "./tablebases"]
+CMD ["--maxTime", "60s", "--allowOrigin", "*", "--poolSize", "0"]

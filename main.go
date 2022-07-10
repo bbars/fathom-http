@@ -5,6 +5,7 @@ import (
 	"flag"
 	"log"
 	"net/http"
+	"runtime"
 	"time"
 	
 	gofathom "github.com/bbars/go-fathom"
@@ -22,13 +23,13 @@ func corsMiddleware(w http.ResponseWriter, r *http.Request, allowOrigin string, 
 func main() {
 	var listen string
 	var tbDir string
-	var poolSize uint
+	var poolSize int
 	var allowOrigin string
 	var maxTime time.Duration
 	var help bool
-	flag.StringVar(&listen, "listen", ":80", "HTTP listen [host]:port")
-	flag.StringVar(&tbDir, "tbDir", "./tables", "Path to the directory containing Tablebase files")
-	flag.UintVar(&poolSize, "poolSize", 4, "Pool size of concurrent Fathom instances")
+	flag.StringVar(&listen, "listen", "127.0.0.1:80", "HTTP listen [host]:port")
+	flag.StringVar(&tbDir, "tbDir", "./tablebases", "Path to the directory containing Tablebase files")
+	flag.IntVar(&poolSize, "poolSize", runtime.NumCPU(), "Pool size of concurrent Fathom instances")
 	flag.StringVar(&allowOrigin, "allowOrigin", "*", "Value for HTTP header Access-Control-Allow-Origin")
 	flag.DurationVar(&maxTime, "maxTime", 0, "Max time limit")
 	flag.BoolVar(&help, "help", false, "Show usage info")
@@ -38,6 +39,9 @@ func main() {
 		flag.Usage()
 		return
 	}
+	if poolSize <= 0 {
+		poolSize = runtime.NumCPU()
+	}
 	
 	log.Println("listen", listen)
 	log.Println("tbDir", tbDir)
@@ -45,7 +49,7 @@ func main() {
 	log.Println("allowOrigin", allowOrigin)
 	log.Println("maxTime", maxTime)
 	
-	fathomPool := limitedpool.New(int(poolSize), func() interface{} {
+	fathomPool := limitedpool.New(poolSize, func() interface{} {
 		res, err := gofathom.NewFathom(tbDir)
 		if err != nil {
 			panic(err)
@@ -53,7 +57,7 @@ func main() {
 		return res
 	})
 	// test Fathom:
-	fathomPool.Put(fathomPool.Get(context.TODO()))
+	fathomPool.Put(fathomPool.Get(context.Background()))
 	
 	httpHandlers := HttpHandlers{
 		ctx: context.Background(),
